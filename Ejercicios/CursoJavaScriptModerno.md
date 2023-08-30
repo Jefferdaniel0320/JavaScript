@@ -96,3 +96,52 @@ const precio = 300;
 console.log(precio);
 console.log(precio.toString());
 ~~~
+Para crear numeros como objetos:
+~~~
+const numero2 = new Number(80); // forma de objeto
+console.log(numero2);
+~~~
+La funcion **Math** es un objeto que tiene varias funciones matematicas como **PI**
+~~~
+let resultado;
+resultado = Math.PI //PI
+resultado = Math.round(2.6) //Redondear
+resultado = Math.ceil(2.1) //Redondear hacia arriba
+resultado = Math.sqrt(2.1) //Raiz cuadrada
+resultado = Math.abs(-10) //Valor absoluto
+resultado = Math.pow(2,3) //Potencia
+resultado = Math.min(2,3,-10,0) //valor minimo de un arreglo
+resultado = Math.max(2,3,-10,0) //valor maximo de un arreglo
+resultado = Math.random()*10 //Random
+resultado = Math.floor(Math.random()*10) //Random de 0 a 10
+console.log(resultado);
+~~~
+Para incrementar o decrementar, se puede hacer de la siguiente forma
+~~~
+let puntaje = 10;
+++puntaje;
+puntaje++;
+puntaje--;
+puntaje +=3; //Aumento de 3 en 3
+puntaje -=2;
+~~~
+Para saber el **tipo de dato**:
+~~~
+console.log(typeof numero1);
+~~~
+Validaciones de String
+~~~
+const numero1 = "20";
+const numero2 = "20.2";
+const numero3 = "Uno";
+const numero4 = 20;
+
+console.log(Number.parseInt(numero1)); //se convierte de string a numero entero
+console.log(Number.parseFloat(numero2)); //se convierte de string a numero decimal
+console.log(Number.isInteger(numero3)); //valida si es entero y devuelve true o false
+~~~
+Para comparar dos variables que sean iguales esta el normal **==** y el extricto **===**
+
+Para comparar dos variables diferentes **!=** y el extricto **!==**
+
+cuando una variable es definida como **null** su tipo es un *Objeto*
