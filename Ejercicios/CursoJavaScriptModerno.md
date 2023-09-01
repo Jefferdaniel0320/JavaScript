@@ -145,3 +145,263 @@ Para comparar dos variables que sean iguales esta el normal **==** y el extricto
 Para comparar dos variables diferentes **!=** y el extricto **!==**
 
 cuando una variable es definida como **null** su tipo es un *Objeto*
+Los booleanos son de tipo objeto, al comparar esto
+~~~
+const boolean1 = true;
+const boolean2 = "true";
+console.log(boolean1 === boolean3)
+// RTA: false
+~~~
+Forma correcta de escribir booleanos:
+~~~
+const autenticado = true;
+
+if (autenticado) {
+    console.log('Si puedes ver Netflix');
+} else {
+    console.log('No, no puedes verlo');
+}
+// Forma de Operador Ternario
+console.log(autenticado ? 'si esta autenticado' : 'No esta autenticado')
+~~~
+## objetos
+Así es como se deben escribir los objetos en JS
+~~~
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true
+}
+console.log(producto);
+console.log(producto.nombre);
+console.log(producto['nombre']); //otra forma de acceder a la propiedad
+~~~
+Como agregar propiedades al objeto y elimiar propiedades
+~~~
+// Agregar nuevas propiedades al objeto
+producto.imagen = 'imagen.jpg';
+
+// Eliminar ls propiedad disponible
+delete producto.disponible;
+~~~
+Forma de extraer las propiedades y uso de Destructuring
+~~~
+// Antes de ES6 se extraia la propiedad de esta forma
+const nombre1 = producto.nombre;
+console.log(nombre1);
+
+// Ahora se extrae con Destructuring
+const {nombre, precio} = producto;
+console.log(nombre);
+console.log(precio);
+~~~
+Objetos dentro de Objetos
+~~~
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+    informacion: {
+        medidas: {
+            peso: '1Kg',
+            medida:'1m' 
+        },
+        fabricacion: {
+            pais: 'China'
+        }
+    }
+}
+console.log(producto.informacion.fabricacion.pais);
+~~~
+Forma de acceder a las propiedades con Des
+~~~
+const {nombre, informacion, informacion: {fabricacion: {pais}}} = producto;
+console.log(nombre);
+console.log(informacion);
+console.log(pais);
+~~~
+Cuando se requiere que el codigo sea extricto, en las buenas practicas, se usa **"use strict"** y para congelar el acceso a un objeto se usa **Object.freeze(producto)** 
+~~~
+"use strict"
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true
+}
+Object.freeze(producto);
+console.log(producto);
+console.log(Object.isFrozen(producto));
+~~~
+Con el metodo **seal** no se puede agregar o eliminar las propiedades, pero si se puede modificar.
+~~~
+"use strict"
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true
+}
+Object.seal(producto); //sella el objeto 
+producto.disponible = false;
+console.log(Object.isSealed(producto)); // validar si esta sellado
+~~~
+Dos formas de copiar Objetos
+~~~
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true
+}
+const medidas = {
+    peso: '1Kg',
+    medida: '1m'
+}
+console.log(producto);
+console.log(medidas);
+// Primera forma de copiar objetos
+const resultado = Object = Object.assign(producto, medidas);
+// Segunda forma de copiar objetos
+const resultado2 = {...producto, ...medidas};
+console.log(resultado);
+console.log(resultado2);
+~~~
+Uso de la palabra reservada **this** sirve para llamar los valores en el mismo objeto.
+~~~
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+    mostrarInfo: function() {
+        console.log(`El Producto: ${this.nombre} tiene un precio de : ${this.precio}`);
+    }
+}
+producto.mostrarInfo();
+~~~
+Objeto **Constructor**
+~~~
+// Object Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+// Object Constructor
+
+function Producto(nombre, precio) {
+    this.nombre = nombre;
+    this.precio = precio;
+    this.disponible = true;
+}
+
+const producto2 = new Producto("Monitor 24 Pulgadas", 500);
+console.log(producto2);
+const producto3 = new Producto("Monitor 30 Pulgadas", 100);
+console.log(producto3);
+~~~
+**Object.keys** este retorna las llaves, se usa para validar si tiene datos  o no el objeto.
+**Object.values** retorna los valores
+**Object.values** retorna los valores
+**Object.entries** retorna todo
+~~~
+// Object Literal
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true,
+}
+console.log(Object.keys(producto));
+console.log(Object.values(producto));
+console.log(Object.entries(producto));
+~~~
+## ARREGLOS
+Los arreglos en JS se usan a traves de [], a continuacion se mustra dos formas de represetnarlos
+~~~
+const numeros = [10, 20, 30] // Esto es un arreglo
+// Otra forma de escribir Arreglos
+const meses = new Array('Enero', 'Febrero', 'Marzo');
+// Arrelgo que contiene datos de todo tipo
+const deTodo = ['Hola', 10, true, "Si", null, {nombre: 'Jeferson', trabajo: 'Ing, Telecomunicaciones'}];
+console.log(deTodo);
+~~~
+Para acceder al arreglo lo podemos hacer uno a uno o especificamente a uno
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
+
+console.table(meses[1]);
+
+// longitud del arreglo
+console.log(meses.length);
+
+// Recorriendo el arreglo
+for(let i=0; i < meses.length; i++) {
+    console.log(meses[i]);
+}
+~~~
+Para modificar un elemento del arreglo o agregar uno nuevo
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
+// Modificar el arreglo
+meses[0] = 'Nuevo mes';
+// Agregar un nuevo elemento
+meses[10] = 'Penultimo mes'; //En este caso omite las posiciones que salto.
+~~~
+Como agregar nuevos elementos al arreglo en la ultima posicion o en la primera
+~~~
+const carrito = [];
+
+// Definir un producto
+const producto = {
+    nombre: 'Monitor 32 Pulgadas',
+    precio: 400
+}
+
+const producto2 = {
+    nombre: 'Celular',
+    precio: 800
+}
+
+const producto3 = {
+    nombre: 'Teclado',
+    precio: 50
+}
+
+carrito.push(producto) // Agrega al final
+carrito.push(producto2) 
+carrito.unshift(producto3) // Lo agrega pero en la primera posición 
+
+console.table(carrito);
+~~~
+Utilizando la forma declarativa para agregar elementos al arreglo del ejemplo anterior
+~~~
+const carrito = [];
+
+const producto = {
+    nombre: 'Monitor 32 Pulgadas',
+    precio: 400
+}
+const producto2 = {
+    nombre: 'Celular',
+    precio: 800
+}
+const producto3 = {
+    nombre: 'Teclado',
+    precio: 50
+}
+let resultado;
+resultado = [...carrito, producto];
+resultado = [...resultado, producto2];
+resultado = [producto3, ...resultado]; // Para colocar este objeto de primeras
+~~~
+Para eliminar los elementos de un arreglo
+~~~
+// Eliminar ultimo elemento de un Arreglo
+carrito.pop();
+console.table(carrito);
+// Eliminar el primer elemento de un Arreglo
+carrito.shift();
+console.table(carrito);
+~~~
+Para eliminarlos de otra forma, Declarativa
+~~~
+carrito.splice(2,1);
+console.table(carrito);
+~~~
