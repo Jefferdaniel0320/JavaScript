@@ -405,3 +405,6 @@ Para eliminarlos de otra forma, Declarativa
 carrito.splice(2,1);
 console.table(carrito);
 ~~~
+
+
+## Hola Bro!
