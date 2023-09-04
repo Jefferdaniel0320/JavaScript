@@ -406,5 +406,28 @@ carrito.splice(2,1);
 console.table(carrito);
 ~~~
 
+El Destructuring para **Objetos** debe ser con la llave, pero en **Arreglos** puedo colocarle el nombre que desee
+~~~
+// Este es un ejemplo de Objeto, no puedo cambiar nombre por una llave que no existe.
+const producto = {
+    nombre: "Monitor 20 Pulgadas",
+    precio: 300,
+    disponible: true
+}
+// Destructuring
+const{nombre} = producto;
+console .log(nombre);
 
-## Hola Bro!
+// Este es un ejemplo de Destructuring con Arreglos
+const numeros = [10, 20, 30, 40];
+const [primero] = numeros;
+const [ , , tercero] = numeros;
+console.log(primero);
+console.log(tercero);
+
+// Este se uusa mucho en Reac, es un Destructuring de arreglos
+const numeros = [10, 20, 30, 40];
+const [primero, ...tercero] = numeros;
+console.log(primero); //10
+console.log(tercero); // [20, 30, 40]
+~~~
