@@ -13,3 +13,7 @@ for (let i = 0; i < carrito.length; i++){
 }
 
 // Una forma mas facil de hacerlo con ArrayMethods
+// Hacen lo mismo el for y forEach, la diferencia radica en que este ultimo permite renombrar.
+carrito.forEach(function(producto) {
+    console.log(`nombre: ${producto.nombre} - Precio: ${producto.precio}`);
+});

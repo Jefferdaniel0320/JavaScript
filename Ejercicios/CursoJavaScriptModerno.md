@@ -425,9 +425,254 @@ const [ , , tercero] = numeros;
 console.log(primero);
 console.log(tercero);
 
-// Este se uusa mucho en Reac, es un Destructuring de arreglos
+// Este se usa mucho en Reac, es un Destructuring de arreglos
 const numeros = [10, 20, 30, 40];
 const [primero, ...tercero] = numeros;
 console.log(primero); //10
 console.log(tercero); // [20, 30, 40]
+~~~
+Forma de iterar un array con ForEach es igual al for.
+~~~
+const carrito = [
+    { nombre : 'Monitor 27 Pulgadas', precio: 500},
+    { nombre : 'Tablet', precio: 500},
+    { nombre : 'Celular', precio: 400},
+    { nombre : 'Monitor 24 Pulgadas', precio: 800},
+    { nombre : 'Monitor 20 Pulgadas', precio: 1000},
+    { nombre : 'Monitor 58 Pulgadas', precio: 3000},
+    { nombre : 'Monitor 7 Pulgadas', precio: 200},
+]
+
+for (let i = 0; i < carrito.length; i++){
+    console.log(`nombre: ${carrito[i].nombre} - Precio: ${carrito[i].precio}`);
+}
+
+// Una forma mas facil de hacerlo con ArrayMethods
+// Hacen lo mismo el for y forEach, la diferencia radica en que este ultimo permite renombrar.
+carrito.forEach(function(producto) {
+    console.log(`nombre: ${producto.nombre} - Precio: ${producto.precio}`);
+});
+~~~
+Las diferencias entre **map** y **forEach**, map crea un arreglo nuevo 
+~~~
+const nuevoArreglo = carrito.map(function(producto) {
+    return `nombre: ${producto.nombre} - Precio: ${producto.precio}`;
+});
+const nuevoArreglo2 = carrito.forEach(function(producto) {
+    return `nombre: ${producto.nombre} - Precio: ${producto.precio}`; // no retorna nada.
+});
+
+console.log(nuevoArreglo);
+console.log(nuevoArreglo2);
+~~~
+
+## FUNCIONES
+Se puede usar, Declaracion de FUnciones o Expresion de FUnciones, la diferencia radica en que en la Expresion de funcion la llamada la debo hacer despues de crearlo.
+~~~
+// Declaracion de funcion
+sumar();
+function sumar() {
+    console.log(2+2);
+}
+
+// Expresión de Función (Funtion Expression)
+const sumar2 = function() {
+    console.log(3+3);
+}
+sumar2();
+~~~
+Como diferenciar un metodo de una funcion
+~~~
+const numero1 = 20;
+const numero2 = "20";
+console.log(parseInt(numero2)); //Esto es una funcion
+console.log(numero1.toString()); //Esto es un metodo
+~~~
+Sintaxis de una función
+~~~
+function sumar(a, b) { // a y b son parametros
+    console.log(a+b);
+}
+sumar(2,3); // 2 y 3 son argumentos
+~~~
+Parametros por default en las funciones
+~~~
+function saludar(nombre = 'Desconocido', apellido = '') {
+    console.log(`Hola ${nombre} ${apellido} mucho gusto.`);
+}
+saludar('Cosita','De Princesa');
+saludar('Cosita');
+saludar();
+~~~
+Comunicando funciones
+~~~
+iniciandoApp();
+function iniciandoApp() {
+    console.log('Iniciando app...');
+    segundaFuncion();
+}
+
+function segundaFuncion() {
+    console.log('Desde la segunda Funcion');
+}
+~~~
+Creando una funcion de carrito de compras con calculo de impuesto
+~~~
+let total = 0;
+
+function agregarCarrito(precio) {
+    return total += precio;
+}
+
+function calcularImpuesto(total) {
+    return Math.round(total*1.15);
+}
+
+total = agregarCarrito(1500);
+total = agregarCarrito(2000);
+total = agregarCarrito(2500);
+// total = agregarCarrito(4000);
+
+totalPagar = calcularImpuesto(total);
+
+console.log(`El total a pagar es de ${totalPagar}`);
+console.log(total);
+
+~~~
+Añadir funciones en un Objeto
+~~~
+const reproductor = {
+    reproducir: function(id) {
+        console.log(`Reporducionedo canción con el ID ${id}`);
+    },
+    pausar: function() {
+        console.log(`pausando`);
+    },
+    borrar: function(id) {
+        console.log(`Borrando cancion... ${id}`);
+    },
+    crearPlaylist: function(nombre) {
+        console.log(`Creando la Playlist ${nombre}`);
+    },
+    reproducirPlaylist: function(nombre) {
+        console.log(`Reporoduciendo la Playlist ${nombre}`);
+    }
+}
+
+reproductor.reproducir(100);
+reproductor.pausar(100);
+reproductor.borrar(100);
+reproductor.crearPlaylist('Nickelback');
+reproductor.reproducirPlaylist('Nickelback');
+~~~
+Arrow Funtions
+~~~
+const aprendiendo = function() {
+    console.log('aprendiendo JavaScript');
+}
+
+const aprendiendo2 = () => {
+    console.log('aprendiendo JavaScript');
+}
+
+// Esto solo aplica cuando se tiene una sola linea
+const aprendiendo3 = () => 'aprendiendo JavaScript';
+~~~
+Si es solo un parametro, no se requiere el parentesis, pero cuando son mas de uno si.
+~~~
+const aprendiendo = function(tecnologia, tecnologia2) {
+    console.log(`Aprendiendo ${tecnologia} y ${tecnologia2}`);
+}
+aprendiendo('JavaScript','NodeJS');
+
+// Esto solo aplica cuando se tiene una sola linea
+const aprendiendo3 = (tecnologia, tecnologia2) => `Aprendiendo ${tecnologia} y ${tecnologia2}`;
+
+console.log(aprendiendo3('Python','NodeJS'));
+~~~
+A continuacion se presenta como se verian .map y forEach
+~~~
+const nuevoArreglo = carrito.map(producto => `nombre: ${producto.nombre} - Precio: ${producto.precio}`);
+const nuevoArreglo2 = carrito.forEach(producto => `nombre: ${producto.nombre} - Precio: ${producto.precio}`);
+~~~
+Aplicacion en **set** y **get**
+~~~
+const reproductor = {
+    cancion: '',
+    reproducir: id => console.log(`Reporducionedo canción con el ID ${id}`),
+    pausar: () => console.log(`pausando`),
+    borrar: id => console.log(`Borrando cancion... ${id}`),
+    
+    set nuevaCancion(cancion) {
+        this.cancion = cancion;
+        console.log(`Añadiendo ${cancion}`);
+    },
+    get obtenerCancion() {
+        console.log(`${this.cancion}`);
+    }
+}
+
+reproductor.nuevaCancion = 'Enter Sandman';
+reproductor.obtenerCancion; // Por ser get, no requiere los ()
+~~~
+
+## Estructuras de Control
+
+Condicional **IF ELSE**
+~~~
+const puntaje = 1000;
+// Igual extricto
+if (puntaje === "1000") {
+    console.log('Si es diferente...')
+} else{
+    console.log('No es igual...')
+}
+// Diferente extricto
+if (puntaje !== "1000") {
+    console.log('Si es Diferente...')
+} else{
+    console.log('No es Diferente...')
+}
+~~~
+Haciendo uso de **else if**
+~~~
+const dinero = 300;
+const totalAPagar = 500;
+const tarjeta = true;
+const cheque = true;
+
+if(dinero >= totalAPagar) {
+    console.log('Si podemos pagar')
+} else if(cheque) {
+    console.log('Si podemos pagar porque tengo un cheque')
+} else if(tarjeta) {
+    console.log('Si podemos pagar porque tengo la tarjeta')
+} else {
+    console.log('No podemos pagar')
+}
+~~~
+Utilizando **Switch**
+~~~
+// Switch case
+
+const metodoPago = 'efectivo';
+
+switch(metodoPago) {
+    case 'efectivo':
+        pagar();
+        break;
+    case 'cheque':
+        console.log(`Pagaste con ${metodoPago}`);
+        break;
+    case 'tarjeta':
+        console.log(`Pagaste con ${metodoPago}`);
+        break;
+    default:
+        console.log('Aun no seleccionaste un metodo de pago o metodo de pago no soportado');
+        break;
+}
+
+function pagar() {
+    console.log('Pagando...');
+}
 ~~~
