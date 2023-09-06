@@ -1,8 +1,9 @@
 <p align="center">
-  <a target="blank"><img src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" alt="Javascript Logo @clipartmax.com" width="200" alt="JavaScript" /></a>
+  <a target="blank"><img src="https://www.freepnglogos.com/uploads/javascript-png/javascript-logo-transparent-logo-javascript-images-3.png" alt="Javascript Logo @clipartmax.com" width="200" /></a>
 </p>
-
-# CURSO JAVASCRIPT MODERNO
+<p align="center">
+  <strong><span style="font-size: 30px;">CURSO JAVASCRIPT MODERNO</span></strong>
+</p>
 
 Se recomienda colocar la etiqueta **script** despues de finalizar el div: 
 ~~~
@@ -11,13 +12,15 @@ Se recomienda colocar la etiqueta **script** despues de finalizar el div:
         alert('Hola Mundo!');
 </script>
 ~~~
-Pero lo mas aconsejable es usar un archivo aparte desde una carpeta:
+Lo más recomendable es utilizar un archivo aparte desde una carpeta:
+
 ~~~
+html
 <script src="js/app.js"></script>
 ~~~
-Para crear variables, var, let y const, const no se pueden reasignar, las otras dos si, ademas const se debe incializar:
+Para crear variables en JavaScript, tienes tres opciones: var, let y const. Mientras const no permite la reasignación de valores, var y let sí lo permiten. Además, es importante mencionar que const debe inicializarse al declararla.
 
-Para colocar cadena de caracteres especiales en el texto
+Para incluir cadenas de caracteres especiales en un texto, simplemente enciérralas en comillas:
 ~~~
 const producto = "monitor 20\"";
 ~~~
@@ -27,7 +30,7 @@ console.log(producto.length);
 ~~~
 Conocer si la palabra se encuentra en el string y devuelve la posición:
 ~~~
-console.log(producto.index0f('Monitor'));
+console.log(producto.indexOf('Monitor'));
 ~~~
 Conocer si existe la palabra exacta en el string y devuelve un booleano
 ~~~
@@ -40,7 +43,7 @@ const precio = '30 USD';
 console.log(producto.concat(precio));
 console.log(producto.concat('en descuento'));
 console.log("El producto " + producto + "tiene un precio de " + precio);
-// Otra forma de hacerlo:
+// Otra forma de hacerlo (utilizando template literals):
 console.log(`El Producto ${producto} tiene un precio de $ ${precio}`);
 ~~~
 Para eliminar el espacio en las cadenas:
@@ -90,46 +93,50 @@ Para pasar de mayusculas a minusculas:
 ~~~
 console.log(producto.toLocaleLowerCase())
 ~~~
-Para convertir un numero a string:
+Para convertir un numero a **string**:
 ~~~
 const precio = 300;
-console.log(precio);
-console.log(precio.toString());
+console.log(precio); // 300 (tipo de dato número)
+console.log(precio.toString()); // '300' (tipo de dato cadena)
 ~~~
 Para crear numeros como objetos:
 ~~~
 const numero2 = new Number(80); // forma de objeto
-console.log(numero2);
+console.log(numero2); // [Number: 80]
 ~~~
 La funcion **Math** es un objeto que tiene varias funciones matematicas como **PI**
 ~~~
 let resultado;
-resultado = Math.PI //PI
-resultado = Math.round(2.6) //Redondear
-resultado = Math.ceil(2.1) //Redondear hacia arriba
-resultado = Math.sqrt(2.1) //Raiz cuadrada
-resultado = Math.abs(-10) //Valor absoluto
-resultado = Math.pow(2,3) //Potencia
-resultado = Math.min(2,3,-10,0) //valor minimo de un arreglo
-resultado = Math.max(2,3,-10,0) //valor maximo de un arreglo
-resultado = Math.random()*10 //Random
-resultado = Math.floor(Math.random()*10) //Random de 0 a 10
+
+resultado = Math.PI; // Valor de PI
+resultado = Math.round(2.6); // Redondear
+resultado = Math.ceil(2.1); // Redondear hacia arriba
+resultado = Math.sqrt(2.1); // Raíz cuadrada
+resultado = Math.abs(-10); // Valor absoluto
+resultado = Math.pow(2, 3); // Potencia
+resultado = Math.min(2, 3, -10, 0); // Valor mínimo de un arreglo
+resultado = Math.max(2, 3, -10, 0); // Valor máximo de un arreglo
+resultado = Math.random() * 10; // Número aleatorio entre 0 y 10
+resultado = Math.floor(Math.random() * 10); // Número aleatorio entero entre 0 y 9
+
 console.log(resultado);
 ~~~
 Para incrementar o decrementar, se puede hacer de la siguiente forma
 ~~~
 let puntaje = 10;
-++puntaje;
-puntaje++;
-puntaje--;
-puntaje +=3; //Aumento de 3 en 3
-puntaje -=2;
+
+++puntaje; // Incrementar en 1 (11)
+puntaje++; // Incrementar en 1 (12)
+puntaje--; // Decrementar en 1 (11)
+puntaje += 3; // Aumentar en 3 (14)
+puntaje -= 2; // Disminuir en 2 (12)
 ~~~
 Para saber el **tipo de dato**:
 ~~~
-console.log(typeof numero1);
+const numero1 = 10;
+console.log(typeof numero1); // "number"
 ~~~
-Validaciones de String
+Este código utiliza las funciones Number.parseInt, Number.parseFloat, y Number.isInteger para realizar conversiones y validaciones de cadenas de texto a números.
 ~~~
 const numero1 = "20";
 const numero2 = "20.2";
@@ -149,8 +156,7 @@ Los booleanos son de tipo objeto, al comparar esto
 ~~~
 const boolean1 = true;
 const boolean2 = "true";
-console.log(boolean1 === boolean3)
-// RTA: false
+console.log(boolean1 === boolean2) // Respuesta: falsa
 ~~~
 Forma correcta de escribir booleanos:
 ~~~
@@ -165,21 +171,25 @@ if (autenticado) {
 console.log(autenticado ? 'si esta autenticado' : 'No esta autenticado')
 ~~~
 ## objetos
-Así es como se deben escribir los objetos en JS
+Los objetos en JavaScript son estructuras de datos que permiten almacenar y organizar información relacionada en pares clave-valor. Cada propiedad (clave) de un objeto está asociada a un valor, lo que facilita la agrupación y manipulación de datos de manera estructurada. Los objetos pueden contener propiedades que representen diversos tipos de datos, como números, cadenas de texto, funciones y otros objetos, lo que los convierte en una característica fundamental para la programación en JavaScript.
 ~~~
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true
 }
-console.log(producto);
-console.log(producto.nombre);
-console.log(producto['nombre']); //otra forma de acceder a la propiedad
+
+console.log(producto); // Muestra todo el objeto
+console.log(producto.nombre); // Accede a la propiedad 'nombre'
+console.log(producto['nombre']); // Otra forma de acceder a la propiedad 'nombre'
 ~~~
-Como agregar propiedades al objeto y elimiar propiedades
+Agregar nuevas propiedades a un objeto en JavaScript utilizando la notación de punto o la notación de corchetes, y también puedes eliminar propiedades existentes con el operador delete. Aquí tienes un resumen de cómo hacerlo:
 ~~~
 // Agregar nuevas propiedades al objeto
-producto.imagen = 'imagen.jpg';
+producto.imagen = 'imagen.jpg'; // Notación de punto
+// o
+producto['imagen'] = 'imagen.jpg'; // Notación de corchetes
+
 
 // Eliminar ls propiedad disponible
 delete producto.disponible;
@@ -213,94 +223,129 @@ const producto = {
 }
 console.log(producto.informacion.fabricacion.pais);
 ~~~
-Forma de acceder a las propiedades con Des
+El código que proporcionaste demuestra cómo puedes utilizar la desestructuración para acceder a propiedades anidadas de un objeto en JavaScript. Es una forma eficiente y legible de extraer valores de objetos anidados
 ~~~
-const {nombre, informacion, informacion: {fabricacion: {pais}}} = producto;
-console.log(nombre);
-console.log(informacion);
-console.log(pais);
+const { nombre, informacion, informacion: { fabricacion: { pais } } } = producto;
+
+console.log(nombre); // Muestra el nombre del producto
+console.log(informacion); // Muestra el objeto 'informacion' completo
+console.log(pais); // Muestra el país de fabricación ('China' en este caso)
 ~~~
 Cuando se requiere que el codigo sea extricto, en las buenas practicas, se usa **"use strict"** y para congelar el acceso a un objeto se usa **Object.freeze(producto)** 
+
+1. **"use strict"**: La declaración "use strict" se utiliza para habilitar el modo estricto en JavaScript, que impone reglas adicionales y más rigurosas al código. Esto ayuda a evitar errores comunes y hace que el código sea más seguro y robusto. Es una buena práctica incluir "use strict" al comienzo de tus archivos JavaScript.
+
+2. **Object.freeze()**: El método Object.freeze() se utiliza para congelar un objeto en JavaScript. Cuando un objeto está congelado, no se pueden agregar, eliminar ni modificar sus propiedades existentes. Esto puede ser útil para evitar modificaciones accidentales en objetos críticos o inmutables.
 ~~~
-"use strict"
+"use strict";
+
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true
-}
-Object.freeze(producto);
-console.log(producto);
-console.log(Object.isFrozen(producto));
+};
+
+Object.freeze(producto); // Congela el objeto 'producto'
+
+console.log(producto); // Muestra el objeto 'producto'
+console.log(Object.isFrozen(producto)); // Verifica si el objeto 'producto' está congelado (true en este caso)
 ~~~
-Con el metodo **seal** no se puede agregar o eliminar las propiedades, pero si se puede modificar.
+* Object.seal() se utiliza para sellar un objeto en JavaScript.
+* Cuando un objeto está sellado, no se pueden agregar ni eliminar propiedades, pero se pueden modificar las propiedades existentes.
+* Puedes verificar si un objeto está sellado utilizando Object.isSealed().
 ~~~
-"use strict"
+"use strict";
+
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true
-}
-Object.seal(producto); //sella el objeto 
-producto.disponible = false;
-console.log(Object.isSealed(producto)); // validar si esta sellado
+};
+
+Object.seal(producto); // Sella el objeto 'producto'
+
+producto.disponible = false; // Modificar una propiedad existente es permitido
+// producto.descripcion = "Nuevo producto"; // Esto daría un error si se intentara agregar una nueva propiedad
+
+console.log(Object.isSealed(producto)); // Valida si el objeto 'producto' está sellado (true en este caso)
 ~~~
-Dos formas de copiar Objetos
+Dos formas de copiar Objetos:
+1. **Usando Object.assign()**: se utiliza para copiar propiedades de uno o más objetos a un objeto de destino.
+Puede modificar un objeto de destino existente o crear uno nuevo.
+Si se copian propiedades de múltiples objetos, las propiedades del último objeto sobrescribirán las anteriores si tienen el mismo nombre.
+2. **Usando el operador de propagación (...)**: se utiliza para copiar todas las propiedades de un objeto a otro.
+Es una forma más concisa y moderna de copiar objetos en comparación con Object.assign().
+Crea un nuevo objeto sin modificar los objetos originales.
 ~~~
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true
-}
+};
+
 const medidas = {
     peso: '1Kg',
     medida: '1m'
-}
+};
+
 console.log(producto);
 console.log(medidas);
-// Primera forma de copiar objetos
-const resultado = Object = Object.assign(producto, medidas);
-// Segunda forma de copiar objetos
-const resultado2 = {...producto, ...medidas};
+
+// Primera forma de copiar objetos usando Object.assign()
+const resultado = Object.assign({}, producto, medidas);
+
+// Segunda forma de copiar objetos usando el operador de propagación (...)
+const resultado2 = { ...producto, ...medidas };
+
 console.log(resultado);
 console.log(resultado2);
 ~~~
-Uso de la palabra reservada **this** sirve para llamar los valores en el mismo objeto.
+La palabra reservada **this** se utiliza para hacer referencia a los valores dentro del mismo objeto en JavaScript. Aquí se muestra un ejemplo de su uso:
+En este código, la función mostrarInfo utiliza this para acceder a las propiedades nombre y precio dentro del objeto producto. Esto permite mostrar información específica del objeto en el mensaje de registro por consola.
 ~~~
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true,
     mostrarInfo: function() {
-        console.log(`El Producto: ${this.nombre} tiene un precio de : ${this.precio}`);
+        console.log(`El producto: ${this.nombre} tiene un precio de: ${this.precio}`);
     }
 }
+
 producto.mostrarInfo();
 ~~~
-Objeto **Constructor**
+Un **objeto constructor** se utiliza en JavaScript para crear múltiples instancias de un tipo de objeto. Aquí tienes un resumen de cómo se usa un objeto constructor:
 ~~~
-// Object Literal
+// Object Literal (Objeto Literal)
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true,
 }
-// Object Constructor
 
+// Object Constructor (Constructor de Objetos)
 function Producto(nombre, precio) {
     this.nombre = nombre;
     this.precio = precio;
     this.disponible = true;
 }
 
+// Crear instancias de Producto usando el constructor
 const producto2 = new Producto("Monitor 24 Pulgadas", 500);
 console.log(producto2);
+
 const producto3 = new Producto("Monitor 30 Pulgadas", 100);
 console.log(producto3);
 ~~~
-**Object.keys** este retorna las llaves, se usa para validar si tiene datos  o no el objeto.
-**Object.values** retorna los valores
-**Object.values** retorna los valores
-**Object.entries** retorna todo
+**Object.keys()**, **Object.values()**, y **Object.entries()** son métodos útiles para trabajar con objetos en JavaScript y obtener información sobre sus propiedades. Aquí tienes un resumen de cómo se utilizan:
+
+- **Object.keys()**: Retorna un array con las llaves (nombres de propiedades) de un objeto. Puede ser útil para validar si un objeto tiene propiedades o para iterar sobre sus propiedades.
+
+- **Object.values()**: Retorna un array con los valores de las propiedades de un objeto. Esto puede ser útil para acceder a los valores de un objeto de manera eficiente.
+
+- **Object.entries()**: Retorna un array de arrays, donde cada subarray contiene una pareja clave-valor (llave-valor) del objeto. Esto puede ser útil para iterar sobre todas las propiedades del objeto o para convertir el objeto en una estructura que sea fácil de trabajar.
+
+Aquí está el resumen con el código de ejemplo:
 ~~~
 // Object Literal
 const producto = {
@@ -308,47 +353,83 @@ const producto = {
     precio: 300,
     disponible: true,
 }
-console.log(Object.keys(producto));
-console.log(Object.values(producto));
-console.log(Object.entries(producto));
+
+console.log(Object.keys(producto)); // Retorna las llaves (nombres de propiedades)
+console.log(Object.values(producto)); // Retorna los valores de las propiedades
+console.log(Object.entries(producto)); // Retorna todas las parejas clave-valor
 ~~~
 ## ARREGLOS
-Los arreglos en JS se usan a traves de [], a continuacion se mustra dos formas de represetnarlos
+Los **Arreglos** en JavaScript se representan utilizando corchetes **[]**. Aquí tienes un resumen de cómo declarar arreglos y algunos ejemplos:
 ~~~
-const numeros = [10, 20, 30] // Esto es un arreglo
-// Otra forma de escribir Arreglos
+// Declarar un arreglo de números
+const numeros = [10, 20, 30]; // Esto es un arreglo
+
+// Otra forma de declarar un arreglo
 const meses = new Array('Enero', 'Febrero', 'Marzo');
-// Arrelgo que contiene datos de todo tipo
-const deTodo = ['Hola', 10, true, "Si", null, {nombre: 'Jeferson', trabajo: 'Ing, Telecomunicaciones'}];
-console.log(deTodo);
+
+// Declarar un arreglo que contiene datos de diversos tipos
+const deTodo = ['Hola', 10, true, "Si", null, { nombre: 'Jeferson', trabajo: 'Ing, Telecomunicaciones' }];
+
+console.log(deTodo); // Muestra el arreglo 'deTodo' completo
 ~~~
-Para acceder al arreglo lo podemos hacer uno a uno o especificamente a uno
+Para acceder a los elementos de un arreglo en JavaScript, puedes hacerlo de manera individual o específica utilizando su índice. Aquí tienes un resumen de cómo se realiza esto:
 ~~~
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
 
-console.table(meses[1]);
+console.table(meses[1]); // Accede al elemento en la posición 1 (Febrero)
 
-// longitud del arreglo
-console.log(meses.length);
+// Obtener la longitud del arreglo
+console.log(meses.length); // Muestra la longitud del arreglo
 
-// Recorriendo el arreglo
-for(let i=0; i < meses.length; i++) {
+// Recorrer el arreglo y mostrar sus elementos
+for (let i = 0; i < meses.length; i++) {
     console.log(meses[i]);
 }
 ~~~
-Para modificar un elemento del arreglo o agregar uno nuevo
+Para modificar un elemento existente en un arreglo o agregar uno nuevo, puedes hacerlo asignando un valor a una posición específica del arreglo. 
+En este código, se modifica el primer elemento del arreglo meses y se agrega un nuevo elemento en la posición 10. Es importante tener en cuenta que si saltas posiciones al agregar un elemento, las posiciones intermedias se llenarán con undefined. Por lo tanto, meses tendrá elementos undefined en las posiciones del 6 al 9.
 ~~~
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'];
-// Modificar el arreglo
-meses[0] = 'Nuevo mes';
-// Agregar un nuevo elemento
-meses[10] = 'Penultimo mes'; //En este caso omite las posiciones que salto.
+
+// Modificar un elemento existente en el arreglo
+meses[0] = 'Nuevo mes'; // Modifica el primer elemento
+
+// Agregar un nuevo elemento al arreglo
+meses[10] = 'Penúltimo mes'; // Agrega un elemento en la posición 10
 ~~~
-Como agregar nuevos elementos al arreglo en la ultima posicion o en la primera
+Para agregar nuevos elementos a un arreglo en la última posición o en la primera, puedes utilizar los métodos **push()** y **unshift()**, respectivamente.
+En este código, se utiliza push() para agregar elementos al final del arreglo carrito y unshift() para agregar elementos al principio del mismo. Esto permite controlar la posición en la que se agregan los elementos en el arreglo.
 ~~~
 const carrito = [];
 
-// Definir un producto
+// Definir productos
+const producto = {
+    nombre: 'Monitor 32 Pulgadas',
+    precio: 400
+};
+
+const producto2 = {
+    nombre: 'Celular',
+    precio: 800
+};
+
+const producto3 = {
+    nombre: 'Teclado',
+    precio: 50
+};
+
+carrito.push(producto); // Agregar al final del arreglo
+carrito.push(producto2);
+carrito.unshift(producto3); // Agregar al principio del arreglo
+
+console.table(carrito); // Mostrar el contenido del arreglo
+
+~~~
+Utilizando la forma declarativa para agregar elementos a un arreglo, puedes crear una nueva matriz (array) que incluya los elementos existentes junto con los nuevos elementos que deseas agregar. Aquí tienes un resumen de cómo hacerlo:
+En este código, se utiliza la sintaxis de propagación (...) para crear una nueva matriz (resultado) que incluye los elementos existentes del carrito junto con los nuevos productos que deseas agregar. Esto permite mantener el arreglo original (carrito) intacto y crear una versión actualizada con los elementos adicionales.
+~~~
+const carrito = [];
+
 const producto = {
     nombre: 'Monitor 32 Pulgadas',
     precio: 400
@@ -364,73 +445,76 @@ const producto3 = {
     precio: 50
 }
 
-carrito.push(producto) // Agrega al final
-carrito.push(producto2) 
-carrito.unshift(producto3) // Lo agrega pero en la primera posición 
-
-console.table(carrito);
-~~~
-Utilizando la forma declarativa para agregar elementos al arreglo del ejemplo anterior
-~~~
-const carrito = [];
-
-const producto = {
-    nombre: 'Monitor 32 Pulgadas',
-    precio: 400
-}
-const producto2 = {
-    nombre: 'Celular',
-    precio: 800
-}
-const producto3 = {
-    nombre: 'Teclado',
-    precio: 50
-}
 let resultado;
-resultado = [...carrito, producto];
-resultado = [...resultado, producto2];
-resultado = [producto3, ...resultado]; // Para colocar este objeto de primeras
-~~~
-Para eliminar los elementos de un arreglo
-~~~
-// Eliminar ultimo elemento de un Arreglo
-carrito.pop();
-console.table(carrito);
-// Eliminar el primer elemento de un Arreglo
-carrito.shift();
-console.table(carrito);
-~~~
-Para eliminarlos de otra forma, Declarativa
-~~~
-carrito.splice(2,1);
-console.table(carrito);
-~~~
 
-El Destructuring para **Objetos** debe ser con la llave, pero en **Arreglos** puedo colocarle el nombre que desee
+// Agregar el primer producto al arreglo 'resultado'
+resultado = [...carrito, producto];
+
+// Agregar el segundo producto al arreglo 'resultado'
+resultado = [...resultado, producto2];
+
+// Agregar el tercer producto al principio del arreglo 'resultado'
+resultado = [producto3, ...resultado];
 ~~~
-// Este es un ejemplo de Objeto, no puedo cambiar nombre por una llave que no existe.
+Para eliminar elementos de un arreglo en JavaScript, puedes utilizar los métodos **pop()** y **shift()**. Aquí tienes un resumen de cómo se utilizan ambos métodos:
+
+- **pop()**: Elimina el último elemento del arreglo y lo retorna. Esto reduce la longitud del arreglo en uno.
+- **shift()**: Elimina el primer elemento del arreglo y lo retorna. Esto también reduce la longitud del arreglo en uno.
+~~~
+const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
+
+// Eliminar el último elemento del arreglo
+const ultimoProducto = carrito.pop();
+console.log(ultimoProducto); // Muestra 'Producto 3'
+console.table(carrito); // Muestra el arreglo sin el último elemento
+
+// Eliminar el primer elemento del arreglo
+const primerProducto = carrito.shift();
+console.log(primerProducto); // Muestra 'Producto 1'
+console.table(carrito); // Muestra el arreglo sin el primer elemento
+~~~
+Puedes eliminar elementos de un arreglo de forma declarativa utilizando el método splice(). Este método te permite especificar la posición y la cantidad de elementos que deseas eliminar. Aquí tienes un resumen de cómo se utiliza:
+~~~
+const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
+
+// Eliminar un elemento de la posición 2 (tercer elemento)
+carrito.splice(2, 1);
+
+console.table(carrito); // Muestra el arreglo sin el elemento eliminado
+~~~
+En JavaScript, el **destructuring** para objetos utiliza las llaves {} para asignar variables a las propiedades del objeto. En cambio, el destructuring para arreglos utiliza corchetes [] para asignar variables a los elementos del arreglo.
+
+En el destructuring de arreglos puedes asignar el nombre que desees a las variables, mientras que en el destructuring de objetos debes usar el nombre de la propiedad del objeto que deseas asignar a la variable.
+~~~
 const producto = {
     nombre: "Monitor 20 Pulgadas",
     precio: 300,
     disponible: true
 }
-// Destructuring
-const{nombre} = producto;
-console .log(nombre);
 
-// Este es un ejemplo de Destructuring con Arreglos
+// Destructuring de un objeto
+const { nombre } = producto;
+console.log(nombre); // Muestra "Monitor 20 Pulgadas"
+~~~
+Destructuring en Arreglos:
+~~~
+
 const numeros = [10, 20, 30, 40];
+
+// Destructuring de un arreglo
 const [primero] = numeros;
-const [ , , tercero] = numeros;
-console.log(primero);
-console.log(tercero);
+console.log(primero); // Muestra 10
+
+const [, , tercero] = numeros;
+console.log(tercero); // Muestra 30
 
 // Este se usa mucho en Reac, es un Destructuring de arreglos
-const numeros = [10, 20, 30, 40];
 const [primero, ...tercero] = numeros;
-console.log(primero); //10
-console.log(tercero); // [20, 30, 40]
+console.log(primero); // Muestra 10
+console.log(tercero); // Muestra [20, 30, 40]
+
 ~~~
+# -------------------------------------------------------------------------------------
 Forma de iterar un array con ForEach es igual al for.
 ~~~
 const carrito = [
