@@ -512,9 +512,7 @@ console.log(tercero); // Muestra 30
 const [primero, ...tercero] = numeros;
 console.log(primero); // Muestra 10
 console.log(tercero); // Muestra [20, 30, 40]
-
 ~~~
-# -------------------------------------------------------------------------------------
 Forma de iterar un array con ForEach es igual al for.
 ~~~
 const carrito = [
@@ -539,18 +537,19 @@ carrito.forEach(function(producto) {
 ~~~
 Las diferencias entre **map** y **forEach**, map crea un arreglo nuevo 
 ~~~
-const nuevoArreglo = carrito.map(function(producto) {
+const nuevoArreglo = carrito.map(function (producto) {
     return `nombre: ${producto.nombre} - Precio: ${producto.precio}`;
 });
-const nuevoArreglo2 = carrito.forEach(function(producto) {
-    return `nombre: ${producto.nombre} - Precio: ${producto.precio}`; // no retorna nada.
+
+const nuevoArreglo2 = carrito.forEach(function (producto) {
+    return `nombre: ${producto.nombre} - Precio: ${producto.precio}`; // No retorna nada.
 });
 
-console.log(nuevoArreglo);
-console.log(nuevoArreglo2);
+console.log(nuevoArreglo); // Muestra el nuevo arreglo con resultados transformados
+console.log(nuevoArreglo2); // Muestra undefined, ya que forEach no retorna un valor
 ~~~
 
-## FUNCIONES
+## FUNCIONES 
 Se puede usar, Declaracion de FUnciones o Expresion de FUnciones, la diferencia radica en que en la Expresion de funcion la llamada la debo hacer despues de crearlo.
 ~~~
 // Declaracion de funcion
@@ -563,7 +562,7 @@ function sumar() {
 const sumar2 = function() {
     console.log(3+3);
 }
-sumar2();
+sumar2();  // Debes llamar a la función después de su definición
 ~~~
 Como diferenciar un metodo de una funcion
 ~~~
@@ -760,3 +759,323 @@ function pagar() {
     console.log('Pagando...');
 }
 ~~~
+Operador y **&&**
+~~~
+const usuario = true;
+const puedePagar = true;
+
+if (usuario && puedePagar) {
+    console.log('Si, puedes compar');
+} else {
+    console.log('No, no puedes compar');
+}
+~~~
+Operardor O **||**
+~~~
+const efectivo = 300;
+const credito = 400;
+const disponible = efectivo + credito;
+const totalPagar = 600;
+
+if (credito > totalPagar || disponible > totalPagar) {
+    console.log('Si podemos pagar');
+} else {
+    console.log('Fondos Insuficientes');
+}
+~~~
+Operador ternario
+~~~
+const authenticated = true;
+const youCanPay = false;
+
+console.log(authenticated && youCanPay ? 'yes, you can pay' : 'no, not authenticated');
+~~~
+## ITERADORES - FOR LOOP
+Validar numeros PAR e IMPAR
+~~~
+for (let i = 1; i <= 20; i++) {
+    if(i % 2 === 0) {
+        console.log(`El numero ${i} es PAR`);
+    }else {
+        console.log(`El numero ${i} es IMPAR`);
+
+    }
+}
+~~~
+Uso de **Break** y **continue** 
+~~~
+for(let i=0; i < 20; i++) {
+    if(i === 5) {
+        console.log(`The Number is ${i}, CINCO`);
+        continue;
+    }
+    if(i === 7) {
+        console.log(`The Number is ${i}, SIETE`);
+        break;
+    }
+    console.log(`The Number is ${i}`);
+}
+~~~
+Ejercicio de Iteradores
+~~~
+// 3 6 9 12 ... fizz
+// 5 10 15 20 ... buzz
+// 15 30 45 ... FIZZBUZZ!
+let num = 100;
+
+for(let i=0; i <= num; i++) {
+
+    if(i%5 === 0 && i%3 === 0 && i!= 0) {
+        console.log(`${i} FIZZBUZZ!`);
+    }
+    else if(i%3 === 0 && i!= 0) {
+        console.log(`${i} fizz`);
+    }
+    else if(i%5 === 0 && i!= 0) {
+        console.log(`${i} buzz`);
+    }
+}
+~~~
+Uso de **While**
+~~~
+let i = 0; // Inicializar el While
+
+while(i < 10) { // COndición
+    console.log(`Número ${i}`)
+    i++; // Incremento
+}
+~~~
+Uso de **do while**, este se ejecuta una unica vez y luego valida  la condición, esa es la diferencia con el while
+~~~
+let i = 1000; // Inicio
+
+do {
+    console.log(`´Numero ${i}`)
+    i++; // Incremento
+} while (i < 10); // Condición
+~~~
+Correcto, la principal diferencia entre forEach() y map() es su comportamiento con respecto a la creación de un nuevo arreglo.
+
+- **forEach()**: Itera sobre los elementos de un arreglo y ejecuta una función de callback para cada elemento, pero no crea un nuevo arreglo. En otras palabras, forEach() se utiliza cuando deseas realizar acciones o tareas en cada elemento del arreglo sin necesariamente crear un nuevo arreglo con resultados transformados.
+
+- **map()**: Crea un nuevo arreglo y retorna un arreglo con el resultado de aplicar una función a cada elemento del arreglo original. Es útil cuando deseas transformar cada elemento del arreglo original y obtener un nuevo arreglo con los resultados.
+
+Ambos métodos pueden utilizarse para llamar a una función en cada elemento del arreglo, pero map() tiene la ventaja adicional de crear un nuevo arreglo con los resultados transformados. Aquí tienes un resumen de su uso:
+~~~
+const pendientes = ['Tarea', 'Comer', 'Proyecto', 'Estudiar JS'];
+
+pendientes.forEach((pendientes, indice) => {
+    console.log(`${indice}: ${pendientes}`)
+})
+
+const carrito = [
+    { nombre : 'Monitor 27 Pulgadas', precio: 500},
+    { nombre : 'Tablet', precio: 500},
+    { nombre : 'Celular', precio: 400},
+    { nombre : 'Monitor 24 Pulgadas', precio: 800},
+    { nombre : 'Monitor 20 Pulgadas', precio: 1000},
+    { nombre : 'Monitor 58 Pulgadas', precio: 3000},
+    { nombre : 'Monitor 7 Pulgadas', precio: 200},
+]
+
+// Aca se comportan exactamente igual:
+carrito.forEach( producto => console.log(producto.nombre));
+carrito.map( producto => console.log(producto.nombre));
+
+// Aca se comportan diferente:
+const nuevoArreglo = carrito.forEach( producto => producto.nombre);
+const nuevoArreglo2 = carrito.map( producto => producto.nombre);
+
+console.log(`Esto es: ${nuevoArreglo}`);
+console.log(`Esto es: ${nuevoArreglo2}`);
+~~~
+uso de **for...of**, es igual al for o foreach, pewro mas corto.
+~~~
+const pendientes = ['Tarea', 'Comer', 'Proyecto', 'Estudiar JS'];
+
+const carrito = [
+    { nombre : 'Monitor 27 Pulgadas', precio: 500},
+    { nombre : 'Tablet', precio: 500},
+    { nombre : 'Celular', precio: 400},
+]
+
+for(let pendiente of pendientes) {
+    console.log(pendiente);
+}
+for(let producto of carrito) {
+    console.log(producto.nombre);
+}
+~~~
+Se esta utilizando dos bucles **for...in** para recorrer las propiedades de un objeto llamado automovil. Este enfoque es una forma efectiva de recorrer y acceder a las propiedades y valores de un objeto en JavaScript utilizando bucles **for...in**.
+~~~
+const automovil = {
+    modelo: 'Camaro',
+    year: 1960,
+    motor: 6.0
+}
+
+// Recorriendo las llaves (propiedades) del objeto
+for (let propiedad in automovil) {
+    console.log(propiedad); // Imprime las llaves (modelo, year, motor)
+}
+
+// Recorriendo y mostrando los valores de las propiedades
+for (let propiedad in automovil) {
+    console.log(`${automovil[propiedad]}`); // Imprime los valores ('Camaro', 1960, 6.0)
+}
+~~~
+## ARRAY METHODS
+
+Uso de **includes**, se utiliza para verificar si un valor específico existe en un arreglo y devuelve un valor booleano (true o false) y **some** se utiliza para verificar si al menos un elemento cumple con cierta condición en un arreglo y también devuelve un valor booleano, pero tambien se puede usar para arreglos, como en **existe2**, 
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
+
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 },
+    { nombre: 'Audifonos', precio: 300 },
+    { nombre: 'Teclado', precio: 400 },
+    { nombre: 'Celular', precio: 700 },
+]
+
+// Comprobar si un valor existe en un arreglo
+
+meses.forEach( mes => {
+    if(mes === "Enero") {
+        console.log('Enero si exsite');
+    }
+})
+
+const resultado = meses.includes('Diciembre');
+console.log(resultado); // Arrojara false
+
+// En un arreglo de objetos se usa some
+const existe = carrito.some(producto => producto.nombre === 'Monitor curvo');
+console.log(existe);
+
+// En un arreglo tradicional con .some
+const existe2 = meses.some((mes) => {
+    return mes === 'Febrero'
+});
+console.log(existe2);
+
+// Escrito como Array Methods de una sola linea:
+const existe3 = meses.some(mes => mes === 'Diciembre');
+console.log(existe3);
+~~~
+findIndex encuentra el indice de un arreglo o de un Objeto, pero solo encunetra el primero.
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
+
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
+
+meses.forEach((mes, i) => {
+    if(mes === 'Abril') {
+        console.log(`Encontrado en el indice con forEach ${i}`);
+    }
+})
+
+// Otra forma de escribirlo con finIndex
+const indice = meses.findIndex( mes => mes === 'Abril');
+console.log(`Usando findindex: ${indice}`);
+
+// Encontrando en indice de un arreglo de Objetos con finIndex...
+const indice2 = carrito.findIndex ( producto => producto.precio === 100);
+console.log(`Usando findindex: ${indice2}`);
+~~~
+Se proporciona una función de reducción que toma dos argumentos: total (que es el acumulador) y producto (el elemento actual del arreglo). La función suma el precio del producto al acumulador total. Además, se proporciona un valor inicial de 0 como segundo argumento de reduce(). Esto asegura que total comience en 0 y se incremente con cada elemento del arreglo.
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
+
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
+
+// Usando un forEach para calcular el total de precios en el carrito
+let total = 0;
+carrito.forEach(producto => total += producto.precio);
+console.log(total); // Imprime el total de precios
+
+// Usando reduce para calcular el total de precios en el carrito
+let resultado = carrito.reduce((total, producto) => total + producto.precio, 0);
+console.log(resultado); // Imprime el mismo total de precios
+~~~
+Array Methods **filter**, este crea un nuevo arreglo con la condicion que se este filtrando.
+~~~
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
+
+let resultado;
+
+resultado = carrito.filter(producto => producto.precio > 100);
+resultado2 = carrito.filter(producto => producto.precio < 600);
+resultado3 = carrito.filter(producto => producto.nombre !== 'Tablet');
+console.log(resultado);
+console.log(resultado);
+console.log(resultado3);
+~~~
+find va a asignar el primer elemento qie cumpla la condición
+~~~
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
+
+// con un forEach
+let resultado = '';
+carrito.forEach((producto, index) =>{
+    if(producto.nombre === 'Tablet') {
+        resultado = carrito[index];
+    }
+});
+console.log(resultado);
+
+// con un find
+let resultado2 = carrito.find(producto => producto.nombre === 'Tablet');
+console.log(resultado2);
+~~~
+every, valida la condicion y en el arreglo todos se deben vumplir o de lo contrario arroja false.
+~~~
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
+
+const resultado = carrito.every(producto => producto.precio < 500);
+console.log(resultado); // false
+// por ejemplo, aen some uno al menos se debe cumplir
+const resultado2 = carrito.some(producto => producto.precio = 100);
+console.log(resultado2); // true
+~~~
+El operador de propagación **spread operator**, sirve para concatenar, pero este lo hace deacuerdo al orden de los parametros como los asignamos, al igual que si agrego un string, de esta forma ~~~...'Hola'~~~ la respuesta sera h o l a, así que se debe tener cuidado.
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
+const meses2 = ['Agosto', 'Septiembre'];
+const meses3 = ['Octubre', 'Noviembre', 'Diciembre'];
+
+// ,concat
+const resultado = meses.concat(meses2, meses3);
+
+console.log(resultado);
+
+// spread operator
+const resultado2 = [...meses, ...meses2, ...meses3];
+console.log(resultado2);
+~~~
+
+
+
+
+
