@@ -1059,7 +1059,7 @@ console.log(resultado); // false
 const resultado2 = carrito.some(producto => producto.precio = 100);
 console.log(resultado2); // true
 ~~~
-El operador de propagación **spread operator**, sirve para concatenar, pero este lo hace deacuerdo al orden de los parametros como los asignamos, al igual que si agrego un string, de esta forma ~~~...'Hola'~~~ la respuesta sera h o l a, así que se debe tener cuidado.
+El operador de propagación **spread operator**, sirve para concatenar, pero este lo hace deacuerdo al orden de los parametros como los asignamos, al igual que si agrego un string, de esta forma **"Hola"** la respuesta sera **"h o l a"**, así que se debe tener cuidado.
 ~~~
 const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
 const meses2 = ['Agosto', 'Septiembre'];
@@ -1074,8 +1074,323 @@ console.log(resultado);
 const resultado2 = [...meses, ...meses2, ...meses3];
 console.log(resultado2);
 ~~~
+Ejemplo 2 de spread operator, en este ejemplo, crea dos arreglos diferentes a los originales, es decir no modifica meses, pero crea uno nuevo meses2 con Agosto al igual que carrito.
+~~~
+const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio'];
 
+const carrito = [
+    { nombre: 'Monitor 27 Pulgadas', precio: 500 },
+    { nombre: 'Televisión', precio: 100 },
+    { nombre: 'Tablet', precio: 200 }
+]
 
+// spread operator con arreglo de indices
+const meses2 = [...meses, 'Agosto'];
+console.log(meses2);
 
+const producto = { nombre: 'Audifonos', precio: 300 };
 
+const carrito2 = [producto, ...carrito] // El orden importa
+console.log(carrito2);
+~~~
 
+## QUE ES EL DOM - Document Object Model
+El DOM es todo el hatml por el cual navego, a continuacion, se muestra cómo acceder a diferentes propiedades y elementos del DOM utilizando JavaScriptt
+~~~
+let elemento;
+
+elemento = document; // Selecciona todo el HTML del documento
+elemento = document.all; // Selecciona todos los elementos HTML del documento
+elemento = document.head; // Selecciona la sección head del documento
+elemento = document.domain; // Obtiene el dominio actual del documento
+elemento = document.forms; // Obtiene una colección de todos los formularios en el documento
+elemento = document.forms[0]; // Selecciona el primer formulario del documento
+elemento = document.forms[0].id; // Obtiene el ID del primer formulario
+elemento = document.forms[0].method; // Obtiene el método (GET o POST) del primer formulario
+elemento = document.forms[0].classList; // Obtiene la lista de clases del primer formulario
+elemento = document.forms[0].action; // Obtiene la URL de acción del primer formulario
+
+elemento = document.links; // Obtiene una colección de todos los enlaces (etiqueta <a>) en el documento
+elemento = document.links[4]; // Selecciona el quinto enlace del documento
+elemento = document.links[4].classList; // Obtiene la lista de clases del quinto enlace como objeto DOMTokenList
+elemento = document.links[4].className; // Obtiene la lista de clases del quinto enlace como una cadena de texto
+
+elemento = document.images; // Obtiene una colección de todas las imágenes (etiqueta <img>) en el documento
+
+elemento = document.scripts; // Obtiene una colección de todas las etiquetas <script> en el documento
+
+console.log(elemento); // Imprime el elemento seleccionado en la consola del navegador
+~~~
+Como seleccionar elementos por su clase haciendo uso del **getElementsByClassName**
+~~~
+// Seleccionar elementos por su clase
+
+const header = document.getElementsByClassName('header');
+console.log(header);
+
+const hero = document.getElementsByClassName('hero');
+console.log(hero);
+
+// si las clases existen mas de 1 vez
+const contenedores = document.getElementsByClassName('contenedor');
+console.log(contenedores);
+
+// si una clases no existe
+const noExiste = document.getElementsByClassName('no-existe');
+console.log(noExiste); // lo trae como vacio.
+~~~
+Como seleccionar elementos por si ID haciendo uso de clase
+~~~
+const header = document.getElementsByClassName('header');
+console.log(header);
+
+const hero = document.getElementsByClassName('hero');
+console.log(hero);
+
+// si las clases existen mas de 1 vez
+const contenedores = document.getElementsByClassName('contenedor');
+console.log(contenedores);
+
+// si una clases no existe
+const noExiste = document.getElementsByClassName('no-existe');
+console.log(noExiste); // lo trae como vacio.
+~~~
+**getElementById** busca un id y trae el primero que encuentre.
+~~~
+const formulario = document.getElementById('formulario');
+console.log(formulario);
+~~~
+querySelector, retorna maximo un elemento.
+~~~
+const card = document.querySelector('.card');
+console.log(card);
+
+// Podemos tener selectores como en CSS
+const info = document.querySelector('.premium .info');
+console.log(info);
+
+// Seleccionar el formulario 
+const formulario = document.querySelector('#formulario');
+console.log(formulario);
+// Seleccionar el formulario y con una clase 
+const formulario2 = document.querySelector('.contenido-hero #formulario');
+console.log(formulario2);
+
+// Seleccionar elementos HTML
+const navegacion = document.querySelector('nav');
+console.log(navegacion);
+~~~
+querySelector all, retorna todo.
+~~~
+const card = document.querySelectorAll('.card');
+console.log(card);
+
+const formularios = document.querySelectorAll('.formulario');
+console.log(formularios);
+~~~
+Modificando elementos del HTML con JS
+~~~
+const encabezado = document.querySelector('.contenido-hero h1');
+console.log(encabezado);
+
+console.log(encabezado.innerText); // Si en el CSS - visibility: hidden; no lo va a encontrar
+console.log(encabezado.textContent); // si lo va a encontrar
+console.log(encabezado.innerHTML); // Este se trae el HTML
+
+const nuevoHeading = 'Hola mi princesa';
+document.querySelector('.contenido-hero h1').textContent = nuevoHeading
+
+// Modificar imagen
+// const imagen = document.querySelector('.card img');
+// imagen.src = 'img/hacer2.jpg';
+~~~
+Cambiando el CSS con JS
+~~~
+const encabezado = document.querySelector('h1');
+
+// Como se escribe en JS
+encabezado.style.backgroundColor = 'red'; // COlor de fondo
+encabezado.style.fontFamily = 'Verdana'; // Tipo de letra
+// encabezado.style.textTransform = 'uppercase'; // Mayuscula
+
+// Como se escribe en CSS
+// encabezado.style.background-Color = 'red';
+
+const card = document.querySelector('.card'); // se selecciona la calse
+card.classList.add('nueva-clase'); // aca se agrega una nueva clase
+card.classList.remove('card'); // aca se elimina una de las clases
+console.log(card.classList);
+~~~
+Para navegar entre Padres **parentElement** e Hijos **children**
+~~~
+const navegacion = document.querySelector('nav.navegacion');
+
+// console.log(navegacion);
+// console.log(navegacion.c|hildNodes); // Los espacios en blanco son considerados elementos
+// console.log(navegacion.children); // Este lista los elementos reales.
+// console.log(navegacion.children[0]); // Este lista los elementos reales.
+
+// Para traer el primer y ultimo elemento de la navegacion
+console.log(navegacion.firstElementChild);
+console.log(navegacion.lastElementChild);
+
+const card = document.querySelector('.card');
+// console.log(card.children[1].children[1].textContent);
+
+// card.children[1].children[1].textContent = 'Nuevo heading desde travesing the dom'
+
+// como acceder a la imagen
+// const imagen = document.querySelector('.card');
+// console.log(imagen.children[0].src)
+
+// Como se cambia la imagen
+// imagen.children[0].src = 'img/hacer2.jpg';
+
+// Traversing the hijo al padre
+// console.log(card.parentElement.parentElement.parentElement)
+
+// Como seleccionar los diferentes hijos con nextElementSibling
+// console.log(card); // Hojo 1
+// console.log(card.nextElementSibling); // Hojo 2
+// console.log(card.nextElementSibling.nextElementSibling); // Hojo 3
+
+// Seleccionar hijos de otra forma
+// const ultimoHijo = document.querySelector('.card:nth-child(4)');
+// console.log(ultimoHijo);
+
+// Consultar penultimo hijo
+// console.log(ultimoHijo.previousElementSibling);
+~~~
+Como eliminar elementos del DOM
+~~~
+const primerEnlace = document.querySelector('a');
+primerEnlace.remove();
+console.log(primerEnlace);
+
+// Eliminar desde el padre
+const navegacion = document.querySelector('.navegacion');
+console.log(navegacion.children);
+navegacion.removeChild(navegacion.children[2]);
+~~~
+Creacion del HTM desde el JS, lo que es un card y un enlace nuevo, en el vieo **106**.
+~~~
+// crear un nuevo enlace
+const enlace = document.createElement('A');
+// Agregandole el texto
+enlace.textContent = 'Nuevo Enlace';
+
+// Añadiendo href
+enlace.href = '/nuevo-enlace';
+
+console.log(enlace);
+enlace.target = "_blank";
+enlace.setAttribute('data-enlace', 'nuevo-enlace');
+enlace.classList.add('alguna-clase');
+enlace.onclick = miFuncion;
+
+// Seleccionar la navegacion
+// const navegacion = document.querySelector('.navegacion');
+// navegacion.appendChild(enlace);
+
+// Si se quiere colocar en una posicion especifica.
+const navegacion = document.querySelector('.navegacion');
+navegacion.insertBefore(enlace, navegacion.children[1]);
+
+function miFuncion() {
+    alert('Diste Click')
+}
+
+// -----------------------------------------
+
+// Crear un CARD de forma dinamica
+
+const parrafo1 = document.createElement('P');
+parrafo1.textContent = 'Concierto';
+parrafo1.classList.add('categoria', 'concierto');
+
+const parrafo2 = document.createElement('P');
+parrafo2.textContent = 'Concierto de Rock';
+parrafo2.classList.add("titulo");
+
+const parrafo3 = document.createElement('P');
+parrafo3.textContent = '$800 por persona';
+parrafo3.classList.add('precio');
+
+// Crear DIV con la clase info
+const info = document.createElement('div');
+info.classList.add('info')
+info.appendChild(parrafo1);
+info.appendChild(parrafo2);
+info.appendChild(parrafo3);
+
+// Crear imagen
+const imagen = document.createElement('img');
+imagen.src = 'img/hacer2.jpg';
+
+// Crear el Card
+const card = document.createElement('div');
+card.classList.add('card');
+
+// Asignar la imagen
+card.appendChild(imagen);
+card.appendChild(info);
+
+// Insertar en el HTML
+const contenedor = document.querySelector('.hacer .contenedor-cards');
+contenedor.appendChild(card); // con este lo ubicamos al final.
+// contenedor.insertBefore(card, contenedor.children[0]); // Ese seria para ubicarlo en la posicion deseada.
+~~~
+Ejemplo de lo que se puede hacer con JS, en este caso como aparecer y desaparecer un menu, esto depende de lo que esta en el CSS.
+~~~
+const btnFlotante = document.querySelector('.btn-flotante');
+const footer = document.querySelector('.footer');
+
+btnFlotante.addEventListener('click', mostrarOcultarFooer);
+
+function mostrarOcultarFooer() {
+    if (footer.classList.contains('activo')) {
+        footer.classList.remove('activo');
+        this.classList.remove('activo');
+        // btnFlotante.classList.remove('activo'); // este es igual al anterior, porque se hace relacion btnFlotante
+        this.textContent = 'Idioma y Moneda';
+    } else {
+        footer.classList.add('activo');        
+        btnFlotante.classList.add('activo');
+        this.textContent = 'X Cerrar';
+    }
+}
+~~~
+
+## EVENTOS
+
+Este **DOMContentLoaded** evento es cuando se carga todo el HTML
+~~~
+console.log(1)
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(2)
+    console.log('Documento Listo')
+})
+console.log(3)
+~~~
+Evento con el Mouse
+~~~
+const nav = document.querySelector('.navegacion');
+
+// Registrar un evento
+// nav.addEventListener('click', () => {
+//     console.log('Click en nav');
+// })
+nav.addEventListener('mouseenter', () => {
+    console.log('Entrando a la navegacion');
+    nav.style.backgroundColor = 'transparent';
+})
+nav.addEventListener('mouseout', () => {
+    console.log('Saliendo de la navegacion');
+    nav.style.backgroundColor = 'black';
+})
+
+// mousedown - similar a click
+// dblclick - doble click
+// mouseup - cuando sueltas el mouse
+~~~
