@@ -1394,3 +1394,97 @@ nav.addEventListener('mouseout', () => {
 // dblclick - doble click
 // mouseup - cuando sueltas el mouse
 ~~~
+Eventos sobre los inputs
+~~~
+const busqueda = document.querySelector('.busqueda'); // ubicamos clase busqueda
+busqueda.addEventListener('input', (evento) => {  
+    if(evento.target.value === '') { // Forma de validar lo que se escribio
+        console.log('fallo la validación');
+    }
+}) // Agregamos el evento
+
+// keydown => cuando escribo una tecla.
+// keyup =>  CUando escribo una tecla pero la suelto.
+// blur => Cuando doy click afuera del formulario.
+// copy => Cuando copio el texto del formulario.
+// paste => Cuando pego algo en el formulario.
+// cute => Cuando corto algo en el texto del formulario.
+// input => se activa con las acciones anteriores, exepto blur, es todo en 1
+~~~
+Eventos en un formulario
+~~~
+const formulario = document.querySelector('#formulario');
+/*
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('Consultando...');
+    console.log(e.target.action);
+})
+*/
+// Otra forma de hacerlo con una funcion
+formulario.addEventListener('submit', validarFormulario);
+function validarFormulario(e) {
+    e.preventDefault();
+    console.log('Consultando...');
+    console.log(e.target.action);
+}
+~~~
+Eventos con el **Scroll**
+~~~
+// validar el scroll que se le da
+window.addEventListener('scroll', () => {
+    const scrollPX = window.scrollY;
+    console.log(scrollPX);
+})
+
+// Cuando quiero llegar a una ubicacion especiafica en mi pag
+window.addEventListener('scroll', () => {
+    const premium = document.querySelector('.premium');
+    const ubicacion = premium.getBoundingClientRect();
+
+    console.log(ubicacion) // se recomienda colocarlo para hacer un debug
+
+    if(ubicacion.top < 100) {
+        console.log('El elemento ya esta visible');
+    } else {
+        console.log('Aún no, da mas scroll');
+    }
+
+})
+~~~
+Event Bubbling: consiste en parar la secuiencia de eventos al dar click en un titulo, card o info, que se propague en los demas.
+~~~
+const cardDiv = document.querySelector('.card');
+const infoDiv = document.querySelector('.info');
+const tituloDiv = document.querySelector('.titulo');
+
+cardDiv.addEventListener('click', e =>{
+    e.stopPropagation()
+    console.log('click en card');
+})
+infoDiv.addEventListener('click', e =>{
+    e.stopPropagation()
+    console.log('click en info');
+})
+tituloDiv.addEventListener('click', e =>{
+    e.stopPropagation()
+    console.log('click en titulo');
+})
+~~~
+Prevenir Event Bubbling con Delegation
+~~~
+const cardDiv = document.querySelector('.card');
+
+cardDiv.addEventListener('click', e => {
+    if(e.target.classList.contains('titulo')) {
+        console.log('Diste click en titulo');
+    }
+    if(e.target.classList.contains('precio')) {
+        console.log('Diste click en precio');
+    }
+    if(e.target.classList.contains('card')) {
+        console.log('Diste click en card');
+    }
+});
+~~~
+Se puede validar el video 115, en el cual se crea html a partir de JS y se trabaja con las funciones de este y el evento onclick
