@@ -1,0 +1,10 @@
+body {
+    background-color: #1a1b26;
+    color: #9ece6a;
+}
+
+.hero {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 7fr;    
+}
