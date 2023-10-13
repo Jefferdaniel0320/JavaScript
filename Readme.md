@@ -1476,7 +1476,7 @@ Prevenir Event Bubbling con Delegation
 const cardDiv = document.querySelector('.card');
 
 cardDiv.addEventListener('click', e => {
-    if(e.target.classList.contains('titulo')) {
+    if(e.target.classList.contains('titulo')) { 
         console.log('Diste click en titulo');
     }
     if(e.target.classList.contains('precio')) {
@@ -1488,3 +1488,17 @@ cardDiv.addEventListener('click', e => {
 });
 ~~~
 Se puede validar el video 115, en el cual se crea html a partir de JS y se trabaja con las funciones de este y el evento onclick
+
+Esto sirve para ver las clases de donde se esta presionando, cuando tiene el .contains('x'), en un if, es que si tiene esa x:
+~~~
+function agregarCurso(e) {
+    console.log(e.target.classList)
+}
+
+function agregarCurso(e) {
+    if(e.target.classList.contains('agregar-carrito')) {
+        console.log('Agregando al Carrito...')
+    }
+}
+~~~
+
