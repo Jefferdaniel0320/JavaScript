@@ -89,11 +89,17 @@ main > section {
 
 .card img {
     width: 100%;
-    transition: 1s
+    transition: 1s;
+    border-radius: 8px;
 }
 
-.card img:hover {
+.Ejemplos .card img:hover {
     transform: scale(1.2);
+    box-shadow: 2px 2px 5px rgba(42, 195, 222, 0.5);
+}
+.Ejercicios .card img:hover {
+    transform: scale(1.2);
+    box-shadow: 2px 2px 5px rgba(255, 158, 100, 0.5);
 }
 
 .info .categoria {
