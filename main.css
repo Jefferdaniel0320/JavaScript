@@ -122,6 +122,14 @@ main > section {
 
 }
 
+.Ejemplos .info .titulo:hover {
+    color: #2ac3de;
+}
+
+.Ejercicios .info .titulo:hover {
+    color: #ff9e64;
+}
+
 .ejemplo {
     color: #2ac3de;
 }
