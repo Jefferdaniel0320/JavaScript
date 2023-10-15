@@ -1024,7 +1024,7 @@ console.log(resultado);
 console.log(resultado);
 console.log(resultado3);
 ~~~
-find va a asignar el primer elemento qie cumpla la condición
+find va a asignar el primer elemento que cumpla la condición
 ~~~
 const carrito = [
     { nombre: 'Monitor 27 Pulgadas', precio: 500 },
@@ -1095,7 +1095,7 @@ console.log(carrito2);
 ~~~
 
 ## QUE ES EL DOM - Document Object Model
-El DOM es todo el hatml por el cual navego, a continuacion, se muestra cómo acceder a diferentes propiedades y elementos del DOM utilizando JavaScriptt
+El DOM es todo el html por el cual navego, a continuacion, se muestra cómo acceder a diferentes propiedades y elementos del DOM utilizando JavaScriptt
 ~~~
 let elemento;
 
