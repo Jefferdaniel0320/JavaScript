@@ -4,6 +4,7 @@ body {
     font-family: Verdana;
 }
 
+
 .hero {
     height: 100vh;
     display: grid;
@@ -11,6 +12,7 @@ body {
     background-image: url(./img/nasa-Q1p7bh3SHj8-unsplash.jpg);
     background-size: 100% 100%;
 }
+
 
 .header {
     align-self: start;
@@ -51,6 +53,9 @@ body {
     margin: 0 auto;
 }
 
+a {
+    text-decoration: none;
+}
 .resumen {
     background-color:rgb(26, 27, 38, 0.8);
     color: #9aa5ce;
@@ -119,7 +124,6 @@ main > section {
     font-size: 15px;
     font-weight: bold;
     margin: 0;
-
 }
 
 .Ejemplos .info .titulo:hover {
