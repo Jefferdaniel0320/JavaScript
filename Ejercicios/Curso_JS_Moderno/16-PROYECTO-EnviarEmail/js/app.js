@@ -7,9 +7,10 @@ document.addEventListener('DOMContentLoaded', function(){
     const formulario = document.querySelector('#formulario');
 
     // Asignar eventeos
-    /*
+    /* 
+    --------------------------------------------------------------------------------
     inputEmail.addEventListener('blur', function(e) {
-        // blur es cunado estoy en un campo y salgo de allí, se dispara el evento
+        // blur es cuando estoy en un campo y salgo de allí, se dispara el evento
         // input es para cuando se esta escribiendo
         console.log(e.target.value);
     });
@@ -21,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function(){
     inputMensaje.addEventListener('blur', function(e) {
         console.log(e.target.value);
     });
-    */
+    --------------------------------------------------------------------------------
+    */ 
+
    // Forma de reducir el anterior script:
 
    // Asignar eventeos
@@ -65,6 +68,10 @@ document.addEventListener('DOMContentLoaded', function(){
             // Eliminoo el anterior.
             alerta.remove();
         }
+    }
+
+    function validarEmail(email) {
+        const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
     }
     
 });
