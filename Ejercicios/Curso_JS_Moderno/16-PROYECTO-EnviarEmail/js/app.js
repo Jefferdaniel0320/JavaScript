@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(){
+    const email = {
+        email: '',
+        asunto: '',
+        mensaje: ''
+    }
+    
     // Seleccionar los elementos de la interface
     const inputEmail = document.querySelector('#email');
     const inputAsunto = document.querySelector('#asunto');
@@ -28,10 +34,8 @@ document.addEventListener('DOMContentLoaded', function(){
    // Forma de reducir el anterior script:
 
    // Asignar eventeos
-   inputEmail.addEventListener('blur', validar);
-   
-   inputAsunto.addEventListener('blur', validar);
-   
+   inputEmail.addEventListener('blur', validar);   
+   inputAsunto.addEventListener('blur', validar);   
    inputMensaje.addEventListener('blur', validar);
    
    function validar(e) {
@@ -41,8 +45,19 @@ document.addEventListener('DOMContentLoaded', function(){
         mostrarAlerta(`El campo ${e.target.id} es obligatorio`, e.target.parentElement);
         return;
     }
+
+    if(e.target.id === 'email' && !validarEmail(e.target.value)) {
+        mostrarAlerta('El email no es valido', e.target.parentElement);
+        return;
+    }
+
     limpiarAlerta(e.target.parentElement);
 
+    // Asignar los valores
+    email[e.target.name] = e.target.value.trim().toLowerCase();
+    
+    // COmprobar el objeto de email
+    comprobarEmail()
     }
 
     function mostrarAlerta(mensaje, referencia) {
@@ -72,6 +87,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
     function validarEmail(email) {
         const regex =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
+        const resultado = regex.test(email)
+        return resultado;
+    }
+
+    function comprobarEmail() {
+        // Captura todos los objetos del arreglo y valida si algunno contiene un string vacio
+        console.log(Object.values(email).includes(''));
     }
     
 });
