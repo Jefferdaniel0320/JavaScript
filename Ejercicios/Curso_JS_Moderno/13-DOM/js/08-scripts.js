@@ -1,15 +1,21 @@
-const navegacion = document.querySelector('nav.navegacion');
+// const navegacion = document.querySelector('.navegacion');
 
 // console.log(navegacion);
 // console.log(navegacion.childNodes); // Los espacios en blanco son considerados elementos
 // console.log(navegacion.children); // Este lista los elementos reales.
-// console.log(navegacion.children[0]); // Este lista los elementos reales.
+// console.log(navegacion.children[0].nodeType); // Este lista los elementos reales.
+// console.log(navegacion.children[0].nodeName); // Este lista los elementos reales.
 
 // Para traer el primer y ultimo elemento de la navegacion
-console.log(navegacion.firstElementChild);
-console.log(navegacion.lastElementChild);
+// console.log(navegacion.firstElementChild);
+// console.log(navegacion.lastElementChild);
 
 const card = document.querySelector('.card');
+card.children[1].children[0].innerHTML = "Marvell" // con esto reemplazo el texto
+card.children[1].children[1].innerHTML = "Iron Man"
+card.children[1].children[2].innerHTML = "USD $ 1.000.000"
+card.children[0].src = 'img/IronMan.jpg' // con esto reemplazo la imagen
+console.log(card.children[0]);
 // console.log(card.children[1].children[1].textContent);
 
 // card.children[1].children[1].textContent = 'Nuevo heading desde travesing the dom'
