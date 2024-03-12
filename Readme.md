@@ -1458,7 +1458,7 @@ Eventos en un formulario
 const formulario = document.querySelector('#formulario');
 /*
 formulario.addEventListener('submit', (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Previene el evento por defecto
     console.log('Consultando...');
     console.log(e.target.action);
 })
